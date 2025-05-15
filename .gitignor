@@ -1,1 +1,10 @@
 
+# Ignore SonarQube scanner files
+.scannerwork/
+
+# Ignore dependency check reports
+dependency-check-report.xml
+
+# Ignore Trivy scan reports
+trivy-*-report.html
+trivy-image-report.html
