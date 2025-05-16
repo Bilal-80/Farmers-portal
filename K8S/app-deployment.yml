@@ -33,7 +33,7 @@ kind: Service
 metadata:
   name: php-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: php-apache
   ports:
