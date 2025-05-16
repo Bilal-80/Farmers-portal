@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: farmers-portal-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"  # Optional, only if using cert-manager
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - farmers.itsmuhammadbilal.me
+      secretName: farmers-portal-tls  # TLS secret to be created by cert-manager
+  rules:
+    - host: farmers.itsmuhammadbilal.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: farmers-portal-service
+                port:
+                  number: 80
