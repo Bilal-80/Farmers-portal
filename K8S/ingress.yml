@@ -12,7 +12,7 @@ spec:
   tls:
     - hosts:
         - farmers.itsmuhammadbilal.me
-      secretName: farmers-portal-tls  # TLS secret to be created by cert-manager
+      secretName: farmers-portal-tls-secret  # TLS secret to be created by cert-manager
   rules:
     - host: farmers.itsmuhammadbilal.me
       http:
