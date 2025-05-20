@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: farmers-portal-tls-cert
+  namespace: default  # 👈 Use the namespace where your Ingress/Service is deployed
+spec:
+  secretName: farmers-portal-tls-secret  # 👈 TLS secret will be created here
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: farmers.itsmuhammadbilal.me
+  dnsNames:
+    - farmers.itsmuhammadbilal.me
