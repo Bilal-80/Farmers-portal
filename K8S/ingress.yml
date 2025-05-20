@@ -5,14 +5,15 @@ metadata:
   namespace: default
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"  # Optional, only if using cert-manager
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"  
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    acme.cert-manager.io/http01-edit-in-place: "true"  
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
         - farmers.itsmuhammadbilal.me
-      secretName: farmers-portal-tls-secret  # TLS secret to be created by cert-manager
+      secretName: farmers-portal-tls-secret
   rules:
     - host: farmers.itsmuhammadbilal.me
       http:
